@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+       <variable
+           name="data"
+           type="com.app.test.domain.home.entity.Results" />
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="clickListener"
+            type="com.app.test.presentation.home.adapter.NearbyChargingStationListAdapter.OnItemTap" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:onClick="@{() -> clickListener.onTap(position, data)}"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{data.name}"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="70dp"
+        imageUrl="@{data.icon}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        ></ImageView>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{data.businessStatus}"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@+id/title"></TextView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TEST</string>
+    <string name="no_internet_connection_message">No network available, please check your WiFi or Data connection</string>
+
+    <string name="no_internet_active_message">No internet available, please check your connected WIFi or Data</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invalid_input">Invalid input</string>
+    <string name="something_went_wrong">Some thing went wrong</string>
+    <string name="unable_to_get_current_location">Unable to get Current location for this position</string>
+    <string name="error_in_getting_current_location">Error in getting current location</string>
+</resources>

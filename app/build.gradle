@@ -1,0 +1,152 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id "dagger.hilt.android.plugin"
+    id "kotlin-kapt"
+    //id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.app.test"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BaseURL", "\"https://maps.googleapis.com/\"")
+            // API key for debug build
+            buildConfigField("String", "MapApiKey", "\"AIzaSyDuAojXaEhXd1EsYTrM2n5WYIezvs04aFU\"")
+
+
+        }
+        staging {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BaseURL", "\"https://maps.googleapis.com/\"")
+            // API key for staging build
+            buildConfigField("String", "MapApiKey", "\"AIzaSyDuAojXaEhXd1EsYTrM2n5WYIezvs04aFU\"")
+
+        }
+
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BaseURL", "\"https://maps.googleapis.com/\"")
+            // API key for release build
+            buildConfigField("String", "MapApiKey", "\"AIzaSyDuAojXaEhXd1EsYTrM2n5WYIezvs04aFU\"")
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding true
+        dataBinding true
+    }
+    packagingOptions{
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    ext.koin_version= "3.2.0-beta-1"
+    ext.kotlin_version = "1.5.31"
+
+    // http
+    ext.retrofit_version = "2.9.0"
+    ext.okhttp_logging_version = "4.9.0"
+
+    // coroutine
+    ext.coroutine_version = "1.4.1"
+
+    // dagger hilt
+    ext.dagger_hilt_version = "2.37"
+    ext.dagger_hilt_viewmodel_version = "1.0.0-alpha03"
+
+    ext.dagger_version = '2.38.1'
+
+    // activity ktx
+    ext.activity_ktx_version = "1.4.0"
+    ext.lifecycle_version = "2.4.0"
+
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
+    implementation 'androidx.annotation:annotation:1.4.0'
+
+
+    //Dagger-Hilt
+    implementation  "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.38.1"
+
+    // http
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_version"
+
+    // coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    //noinspection GradleDependency
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    // view model
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
+    implementation "androidx.activity:activity-ktx:$activity_ktx_version"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
+    // ROOM DB
+    ext.roomVersion = "2.4.2"
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
+    // Preferences Datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //Dp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // Circle Image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+    // Android Jetpack Paging 3.0
+    implementation "androidx.paging:paging-runtime:3.1.1"
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
+
+}
